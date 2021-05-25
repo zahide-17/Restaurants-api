@@ -2,6 +2,9 @@
  */
 
 const Restaurant = require('../models/Restaurant')
+const csv = require('csv-parser')
+const fs = require('fs')
+const results = [];
 
 function createRestaurant(req, res) {
   // Instanciaremos un nuevo usuario utilizando la clase usuario
@@ -10,9 +13,18 @@ function createRestaurant(req, res) {
 }
 
 function obtainRestaurant(req, res) {
-  // Simulando dos usuarios y respondiendolos
-  var restaurant = new Usuario(1, 'Juan', 'Vega', 'juan@vega.com')
-  res.send([restaurant])
+    // Simulando dos usuarios y respondiendolos
+    fs.createReadStream('restaurantes.csv')
+        .pipe(csv({
+            separator: ',',
+            newline: '\n',
+            
+        }))
+        .on('data', (data) => results.push(data))
+        .on('end', () =>{
+            
+            res.send([results])
+        });  
 }
 
 function modifyRestaurant(req, res) {
