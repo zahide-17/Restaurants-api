@@ -4,12 +4,13 @@ const {
   createRestaurant,
   obtainRestaurant,
   modifyRestaurant,
-  removeRestaurant
+  deleteRestaurant
 } = require('../controllers/restaurants')
 
 router.get('/', obtainRestaurant)
+router.get('/:id', obtainRestaurant);
 router.post('/', createRestaurant)
 router.put('/:id', modifyRestaurant)
-router.delete('/:id', removeRestaurant)
+router.delete('/:id', deleteRestaurant)
 
 module.exports = router;

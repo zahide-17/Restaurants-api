@@ -10,6 +10,17 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// Mongoose Configuration
+const mongoose = require("mongoose");
+
+mongoose.connect(
+    "mongodb+srv://zadd:91MwDidJNYYPiNkN@cluster0-xmea4.mongodb.net/Restaurante?retryWrites=true&w=majority"
+);
+
+mongoose.set("debug", true);
+
+require("./models/Restaurant");
+
 // Agregamos el código de nuestro router (routes/index.js)
 app.use('/v1', require('./routes'));
 
