@@ -13,11 +13,11 @@ app.use(bodyParser.json());
 // Mongoose Configuration
 const mongoose = require("mongoose");
 
-/*mongoose.connect(
-    "mongodb+srv://zadd:91MwDidJNYYPiNkN@cluster0-xmea4.mongodb.net/Restaurante?retryWrites=true&w=majority"
+mongoose.connect(
+    "mongodb+srv://zadd:91MwDidJNYYPiNkN@cluster0-xmea4.mongodb.net/RestauranteDEV?retryWrites=true&w=majority"
 );
 
-mongoose.set("debug", true);*/
+mongoose.set("debug", true);
 
 require("./models/Restaurant");
 
